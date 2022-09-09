@@ -1,0 +1,592 @@
+\input{./preamble.tex}
+
+\begin{document}
+\begin{center}
+    \Huge Chapter 2
+\end{center}
+
+\section{Page 25: 2.1}
+\subsection{Ex 2.1}
+\textbf{A.}
+\begin{align*}
+    0x39A7F8 \rightarrow 0011\ 1001\ 1010\ 0111\ 1111\ 1000
+\end{align*}
+\textbf{B.}
+\begin{align*}
+    1100\ 1001\ 0111\ 1011 \rightarrow 0xC97B
+\end{align*}
+\textbf{C.}
+\begin{align*}
+    0xD5E4C \rightarrow 1101\ 0101\ 1110\ 0100\ 1100
+\end{align*}
+\textbf{D.}
+\begin{align*}
+    10\ 0110\ 1110\ 0111\ 1011\ 0101 \rightarrow 0x26E7B5
+\end{align*}
+
+\subsection{Ex 2.2}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        n & $2^n$ (Dec) & $2^n$ (Hex)\\
+        \midrule
+        9 & 512 & 0x200\\
+        19 & 524288 & 0x80000\\
+        14 & 16384 & 0x4000\\
+        16 & 65536 & 0x10000\\
+        17 & 131072 & 0x20000\\
+        5 & 32 & 0x20\\
+        7 & 128 & 0x80\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.3}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Dec & Bin & Hex\\
+        \midrule
+        0 & 0000 0000 & 0x00\\
+        167 & 1010 0111 & 0xA7\\
+        62 & 0011 1110 & 0x3E\\
+        188 & 1011 1100 & 0xBC \\
+        55 & 0011 0111 & 0x37\\
+        136 & 1000 1000 & 0x88\\
+        243 & 1111 0011 & 0xF3\\
+        82 & 0101 0010 & 0x52\\
+        172 & 1010 1100 & 0xAC\\
+        231 & 1110 0111 & 0xE7\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.4}
+\textbf{A.} 0x503c + 0x8 = 0x5044 \par \noindent
+\textbf{B.} 0x503c - 0x40 = 0x4ffc \par \noindent
+\textbf{C.} 0x503c + 64 = 0x503c + 0x40 = 0x507c \par \noindent
+\textbf{D.} 0x50ea - 0x503c = 0xae
+
+\subsection{Ex 2.5}
+\textbf{A.} S: 21 B: 87 \par \noindent
+\textbf{B.} S: 21 43 B: 87 65 \par \noindent
+\textbf{C.} S: 21 43 65 B: 87 65 43
+
+\subsection{Ex 2.6}
+\textbf{A.}
+\begin{align*}
+    0x00359141 &\rightarrow 0000\ 0000\ 0011\ 0101\ 1001\ 0001\ 0100\ 0001\\
+    0x4A564504 &\rightarrow 0100\ 1010\ 0101\ 0110\ 0100\ 0101\ 0000\ 0100
+\end{align*}
+\textbf{B.}
+\begin{align*}
+    00000000001&101011001000101000001\\
+    010010100&10101100100010100000100\\
+             &012345678901234567890
+\end{align*}
+21 bits match.\par \noindent
+\textbf{C.} s1: 1-11; s2:1-9, 31-32
+
+\subsection{Ex 2.7}
+61 62 63 64 65 66
+
+\subsection{Ex 2.8}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        Operation & Result\\
+        \midrule
+        a & [01101001]\\
+        b & [01010101]\\
+        ~a & [10010110]\\
+        ~b & [10101010]\\
+        a $\&$ b & [01000001]\\
+        a $|$ b & [01111101]\\
+        a $\land$ b & [00111100]\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.9}
+\textbf{A.} Black $\leftrightarrow$ White; Blue $\leftrightarrow$ Yellow; Green $\leftrightarrow$ Magenta; Cyan $\leftrightarrow$ Red;\par \noindent
+\textbf{B.} Blue $|$ Green = Cyan; Yellow $\&$ Cyan = Green; Red $\land$ Magenta = Blue
+
+\subsection{Ex 2.10}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Step & $*x$ & $*y$ \\
+        \midrule
+        Initially & $a$ & $b$\\
+        Step 1 & $a$ & $a \land b$\\
+        Step 2 & $a \land (a \land b) = b$ & $a \land b$\\
+        Step 3 & $b$ & $b \land (a \land b) = a$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.11}
+\begin{enumerate}
+    \item first = k; last = k
+    \item x and y point to the same address. In the first step, the value of the address is set to 0.
+    \item \begin{lstlisting}[language=C]
+    #include <stdlib.h>
+
+    void inplace_swap(int *x, int *y) {
+        if (x == y)
+            exit(0);
+        ...
+    }
+    \end{lstlisting}
+    \color{red}\textbf{Solution: } Replace line 4: first $<$ last;
+\end{enumerate}
+
+\subsection{Ex 2.12}
+\begin{enumerate}
+    \item $x\ \&\ 0xFF$
+    \item $(\sim x)\land 0xFF$ {\color{blue}\textbf{Solution: } $x\ \land\ \sim 0xFF$}
+    \item $x\ |\ 0xFF$
+\end{enumerate}
+
+\subsection{Ex 2.13}
+\begin{lstlisting}[language=C]
+int bis(int x, int m);
+int bic(int x, int m);
+
+int bool_or(int x, int y) {
+    int result = bis(x, y);
+    return result;
+}
+
+int bool_xor(int x, int y) {
+    int result = bic(x, y); 
+    return result;
+}
+\end{lstlisting}
+{\color{red}\textbf{Solution: (XOR) }int result = bis(bic(x, y), bic(y, x));\\
+bis(x, m) $\Leftrightarrow$ OR;\\
+bic(x, m) $\Leftrightarrow$ x $\&\ \sim$m;\\
+$x\ \land\ y = (x\ \&\ \sim y)\ |\ (\sim x\ \&\ y)$
+}
+
+\subsection{Ex 2.14}
+x = 0x66; y = 0x39;\\
+$\Rightarrow$\\
+x = 0110 0110\\
+y = 0011 1001
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        Expression & Value \\
+        \midrule
+        $x\ \&\ y$ & 0010 0000 = 0x20\\
+        $x\ |\ y$ & 0111 1111 = 0x7F\\
+        $\sim x \ |\ \sim y$ & 1001 1001 $|$ 1100 0110 = 1101 1111 = 0xDF\\
+        $x\ \&\ !y$ & 0x00\\
+        $x\ \&\&\ y$ & 0x01\\
+        $x\ ||\ y$ & 0x01\\
+        $!x\ ||\ !y$ & 0x00\\
+        $x\ \&\&\ \sim y$ & 0x01\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.15}
+$(x\ \land\ y)\ ||\ 0$\\
+{\color{red}\textbf{Solution: } $!(x\ \land\ y)$}
+
+\subsection{Ex 2.16}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llllllll}
+        \toprule
+        a && $a\ <<\ 2$ && $a\ >>\ 3$ (L) && $a\ >>\ 3$ (A)\\
+        \midrule
+        Hex & Binary & Binary & Hex & Binary & Hex & Binary & Hex \\
+        \midrule
+        0xC3 & 1100 0011 & 0000 1100 & 0x0C & 0001 1000 & 0x18 & 1111 1000 & 0xF8\\
+        0x75 & 0111 0101 & 1101 0100 & 0xD4 & 0000 1110 & 0x0E & 0000 1110 & 0x0E\\
+        0x87 & 1000 0111 & 0001 1100 & 0x1C & 0001 0000 & 0x10 & 1111 0000 & 0xF0\\
+        0x66 & 0110 0110 & 1001 1000 & 0x98 & 0000 1100 & 0x0C & 0000 1100 & 0x0C\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Page 45: 2.2}
+\subsection{Ex 2.17}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        Hexadecimal & Binary & $B2U_4(\vec{x})$ & $B2T_4(\vec{x})$\\
+        \midrule
+        0xE & 1110 & $2^3 + 2^2 + 2^1 = 14$ & $-2^3 + 2^2 + 2^1 = -2$\\
+        0x0 & 0000 & 0 & 0 \\
+        0x5 & 0101 & 5 & 5\\
+        0x8 & 1000 & 8 & -8\\
+        0xD & 1101 & 13 & -3\\
+        0xF & 1111 & 15 & -1\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.18}
+A. 0x2e0 = 0010 1110 0000 = 736; B. 0x58 = 0101 1000 = 88;\\ 
+C. 0x28 = 0010 1000 = 40; D. 0x30 = 0011 0000 = 48;\\
+E. 0x78 = 0111 1000 = 120; F. 0x88 = 1000 1000 = -120; {\color{red}\textbf{Solution: }136, $2^7 + 2^3 = 136$}\\
+G. 0x1f8: 0001 1111 1000 = 504; H. 0xc0: 1100 0000 = -64; {\color{red}\textbf{Solution: }192, 128 + 64 = 192}\\ 
+I: 0x48 = 0100 1000 = 72.
+
+\subsection{Ex 2.19}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        $x$ & $T2U_4(x)$\\
+        \midrule
+        -8 & 8\\
+        -3 & 13\\
+        -2 & 14\\
+        -1 & 15\\
+        0 & 0\\
+        5 & 5\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.20}
+\begin{itemize}
+    \item $8 = -8 + 2^4,\ x < 0$
+    \item $13 = -3 + 2^4,\ x < 0$
+    \item $14 = -2 + 2^4,\ x < 0$\\
+    \item $15 = -1 + 2^4,\ x < 0$
+    \item $0 = 0,\ x \geq 0$
+    \item $5 = 5,\ x \geq 0$
+\end{itemize}
+
+\subsection{Ex 2.21}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Expression & Type & Evaluation \\
+        \midrule
+        -2147483647-1 == 2147483648U & Unsigned & 1\\
+        -2147483647-1 $<$ 2147483647 & Signed & 1\\
+        -2147483647-1U $<$ 2147483647 & Unsigned & 0\\
+        -2147483647-1 $<$ -2147483647 & Signed & 1\\
+        -2147483647-1U $<$ -2147483647 & Unsigned & 1\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.22}
+\begin{enumerate}
+    \item $1011 = -8 + 2 + 1 = -5$
+    \item $11011 = -16 + 8 + 2 + 1 = -5$
+    \item $111011 = -32 + 16 + 8 + 2 + 1 = -5$
+\end{enumerate}
+
+\subsection{Ex 2.23}
+\begin{enumerate}
+    \item \begin{table}
+        \centering
+        \begin{tabular}{lll}
+            \toprule
+            w & fun1(w) & fun2(w)\\
+            \midrule
+            0x00000076 & 0x00000076 & 0x00000076\\
+            0x87654321 & 0x00000021 & 0x00000021\\
+        0x000000C9 & 0x000000C9 & 0x111111C9 {\color{red}\textbf{Solution:} 0xFFFFFFC9}\\
+            0xEDCBA987 & 0x00000087 & 0x11111187 {\color{red} \textbf{Solution: }0xFFFFFF87}\\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\item fun1: Retain the lowest byte. fun2: Retain the lowest byte and set the sign according to the first bit of the lowest byte. {\color{blue}\textbf{Solution:} fun1: 0 to 255 unsigned int, fun2: -127 to 128 signed int}
+\end{enumerate}
+
+\subsection{Ex 2.24}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llllll}
+        \toprule
+        Hex && Unsigned && Two's complement & \\
+        Original & Truncated & Original & Truncated & Original & Truncated\\
+        \midrule
+        0 & 0 & 0 & 0 & 0 & 0\\
+        2 & 2 & 2 & 2 & 2 & 2\\
+        9 & 1 & 9 & 1 & -7 & 1\\
+        B & 3 & 11 & 3 & -5 & 3\\
+        F & 7 & 15 & 7 & -1 & 7 {\color{red}\textbf{Solution: }-1, $7 - 2^3 = -1$}\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.25}
+Line 6: 'length - 1' overflows. Then, the for loop tries to read elements outside the boundary. unsiged length $\Rightarrow$ int length
+
+\subsection{Ex 2.26}
+\begin{enumerate}
+    \item The length of s is shorter than that of t.
+    \item The result of 'strlen(s) - strlen(t)' is converted into type unsigned and therefore always bigger than 0.
+    \item return strlen(s) $>$ strlen(t);
+\end{enumerate}
+
+\section{Page 62: 2.3}
+\subsection{Ex 2.27}
+\begin{lstlisting}[language=C]
+/* Determine whether arguments can be added without overflow */
+int uadd_ok(unsigned x, unsigned y);
+
+int uadd_ok(unsigned x, unsigned y) {
+    if ((x + y) < x && (x + y) < y)
+        return 0;
+    else
+        return 1;
+}
+\end{lstlisting}
+{\color{blue}\textbf{Solution: } \\
+    unsigned sum = x + y;\\
+    return sum $>=$ x;
+}
+
+\subsection{Ex 2.28}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        $x$ && $-^{u}_{4}x$ &\\
+        Hex & Decimal & Decimal & Hex\\
+        \midrule
+        0 & 0 & 0 & 0\\
+        5 & 5 & 11 & B\\
+        8 & 8 & 8 & 8\\
+        D & 13 & 3 & 3\\
+        F & 15 & 1 & 1\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.29}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lllll}
+        \toprule
+        $x$ & $y$ & $x + y$ & $x +^t_5 y$ & Situation\\
+        \midrule
+        10100 & 10001 & 100101 & 00101 & 1\\
+        11000 & 11000 & 110000 & 10000 & 2\\
+        10111 & 01000 & 11111 {\color{red}\textbf{Solution: }111111, -9 + 8 = -1} & 11111 & 2\\
+        00010 & 00101 & 00111 {\color{red}\textbf{Solution: }000111}& 00111 & 3\\
+        01100 & 00100 & 11000 & 11000 & 2\\
+              &&{\color{red}\textbf{Solution: }010000} & {\color{red}10000} & {\color{red}4} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.30}
+\begin{lstlisting}[language=C]
+/* Determine whether arguments can be added without overflow */
+int tadd_ok(int x, int y);
+
+int tadd_ok(int x, int y) {
+    if ((x + y) < x && (x + y) < y)
+        return 0;
+    else if ((x < 0) && (y < 0) && ((x + y) > 0))
+        return 0;
+    else
+        return 1;
+}
+\end{lstlisting}
+{\color{red}\textbf{Solution: }\\
+int sum = x + y;\\
+int neg\_over = x $<$ 0 \&\& y $<$ 0 \&\& sum $\geq$ 0;\\
+int pos\_over = x $\geq$ 0 \&\& y $\geq$ 0 \&\& sum $<$ 0;\\
+return !neg\_over \&\& !pos\_over;
+}
+
+\subsection{Ex 2.31}
+It will always return 1.\\
+{\color{blue}\textbf{Solution: }Abel group}
+
+\subsection{Ex 2.32}
+{\color{red}\textbf{Solution: }When y = TMin,\\
+    -y = -TMin = Tmax + 1 $\Rightarrow$ -y = TMin,\\
+    Then, tadd\_ok returns 0 if x $<$ 0 and 1 otherwise, which is contrary to expectation.
+}
+
+\subsection{Ex 2.33}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        $x$ && $-^t_4 x$ & \\
+        Hex & Decimal & Decimal & Hex\\
+        \midrule
+        0 & 0 & 0 & 0\\
+        5 & 5 & -5 & B\\
+        8 & -8 & -8 & 8\\
+        D & -3 & 3 & 3\\
+        F & -1 & 1 & 1\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+The bit patterns generated by two's-complement and unsigned negation are the same.
+
+\subsection{Ex 2.34}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lllll}
+        \toprule
+        Mode & $x$ & $y$ & $x \cdot y$ & Truncated $x \cdot y$\\
+        \midrule
+        Unsigned & 4 [100] & 5 [101] & 20 [010100] & 4 [100]\\
+        Two's complement & -4 [100] & -3 [101] & 12 [010100] & -4 [100]\\         
+        Unsigned & 2 [010] & 7 [111] & 14 [001110] & 6 [110]\\
+        Two's complement & 2 [010] & -1 [111] & -2 [111110] & -2 [110]\\
+        Unsigned & 6 [110] & 6 [110] & 36 [100100] & 4 [100]\\
+        Two's complement & -2 [110] & -2 [110] & 4 [000100] & -4 [100]\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.35}
+\begin{enumerate}
+    \item 
+    \begin{align*}
+        x &= \left[ x_{w - 1}, \dots, x_0 \right]\\ 
+        y &= \left[ y_{w - 1}, \dots, y_0 \right]\\
+          &\left( -x_{w - 1}2^{w - 1} + \sum_{i=0}^{w - 2} x_i2^i \right) \cdot \left( -y_{w - 1}2^{w - 1} + \sum_{i = 0}^{w - 2} y_i2^i \right)\\
+        =&\left( x_{w-1}y_{w-1}2^{w-2} - x_{w-1}\sum_{i=0}^{w-2} y_i2^{i-1} - y_{w-1}\sum_{i=0}^{w-2} x_i2^{i-1} \right) 2^w + \left( \sum_{i=0}^{w-2}x_i2^i \right)\left( \sum_{i=0}^{w-2} y_i2^i \right) \\
+        =&\ t2^w + p
+    \end{align*}
+    overflow $\Leftrightarrow$ $\left( x \cdot y \right) \text{mod}\ 2^w \neq 0$ $\Leftrightarrow$ $t \neq 0$\\
+    {\color{red}\textbf{Solution: }\\
+        u: the unsigned number represented by the lower w bits\\
+        v: the two's-complement number represented by the upped w bits
+        \begin{align*}
+            x \cdot y &= v2^w + u\\
+            u &= T2U_w(p)\\
+            u &= p + p_{w-1}2^w
+        \end{align*}
+        p: the most significant bit of p\\
+        Let $t = v + p_{w-1}$,
+        $$x \cdot y = p + t2^w$$
+        Then, $t \neq 0 \Leftrightarrow x \cdot y \neq p$; $t = 0 \Leftrightarrow x \cdot y = p$
+    }
+    \item 
+        {\color{red}\textbf{Solution: }\\
+            By the definition of integer division, dividing p by nonzero x gives a quotient q and a remainder r such that $p = x \cdot q + r$ and $|r| < |x|$.
+        }
+    \item 
+    \begin{align*}
+        p &= x \cdot q + r \\
+        x \cdot y &= p + t2^w\\
+        \Rightarrow\ p &= x \cdot y - t2^w\\
+        q = y &\Leftrightarrow r = t = 0
+    \end{align*}
+\end{enumerate}
+
+\subsection{Ex 2.36}
+\begin{lstlisting}[language=C]
+    #include<limits.h>
+
+    int tmult_ok(int x, int y) {
+        int64_t p = x * y;
+        return !(p > INT_MAX);
+    }
+\end{lstlisting}
+{\color{red}\textbf{Solution: }
+\begin{lstlisting}
+    int tmult_ok(int x, int y) {
+        int64_t pll = (int64_t) x * y;
+        return pll == (int) pll;
+    }
+\end{lstlisting}
+}
+
+\subsection{Ex 2.37}
+\begin{enumerate}
+    \item Use 64 bits to store the result of multiplication. It extends the range of the multiplication result.\\
+    {\color{red}\textbf{Solution: }This change does not help at all.}
+    \item 
+    \begin{lstlisting}
+        if (asize == (int) asize)
+            void *result = malloc(asize);
+        else
+            exit(0);
+    \end{lstlisting}
+   {\color{blue}\textbf{Solution: }
+   \begin{lstlisting}
+       uint64_t required_size = ele_cnt * (uint64_t) ele_size;
+       size_t request_size = (size_t) required_size;
+       if (required_size != required_size)
+           return NULL;
+       void  *result = malloc(request_size);
+       if (result == NULL)
+           return NULL;
+   \end{lstlisting}
+   } 
+\end{enumerate}
+
+\subsection{Ex 2.38}
+\begin{itemize}
+    \item $b = 0$, $2^k a$, $k = 0, 1, 2, 3$
+    \item $b = a$, $(2^k + 1)a$, $k = 0, 1, 2, 3$
+\end{itemize}
+
+\subsection{Ex 2.39}
+$$
+(x << n) - (x << m) + ((x >> n) << n)
+$$
+{\color{red}\textbf{Solution: }
+$$-(x<<m)$$
+Let the word size be $w$ so that $n = w - 1$. Form B states that,
+$$(x<<w) - (x<<m)$$ But shifting $x$ to the left by $w$ will yield the value 0.
+}
+\subsection{Ex 2.40}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        K & Shifts & Add/Subs & Expression\\
+        \midrule
+        6 & 2 & 1 & $(x << 3) - (x << 1)$\\
+        31 & 1 & 1 & $(x << 5) - x$\\
+        -6 & 2 & 1 & $(x << 1) - (x << 3)$\\
+        55 & 2 & 2 & $(x << 6) - (x << 3) - 1$\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Ex 2.41}
+$n = m$, A. $n = m + 1$, A or B. Otherwise, B.
+
+\subsection{Ex 2.42}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
